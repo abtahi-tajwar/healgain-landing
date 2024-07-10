@@ -69,10 +69,10 @@ window.addEventListener('touchend', function() {
   } else {
       if (diffY > 0) {
           console.log('Swiped down');
-          onScrollFunc('down')
+          onScrollFuncMobile('down')
       } else {
           console.log('Swiped up');
-          onScrollFunc('up')
+          onScrollFuncMobile('up')
       }
   }
 })
@@ -126,6 +126,22 @@ function onScrollFunc (direction) {
     scrollStatus.wheeling = false;
     scrollStatus.functionCall = false;
   }, 50); //set this millisecond to your liking
+}
+function onScrollFuncMobile (swipe) {
+  if (swipe === 'up') {
+    console.log("scrolled down");
+    if (!(currentPageIndex >= pages.length - 1)) {
+      currentPageIndex = currentPageIndex + 1;
+      handlePageMove(currentPageIndex, "down");
+    }
+  }
+  if (swipe === 'down') {
+    debugger;
+    if (!(currentPageIndex <= 0)) {
+      currentPageIndex = currentPageIndex - 1;
+      handlePageMove(currentPageIndex, "up");
+    }
+  }
 }
 
 const initializePages = () => {
