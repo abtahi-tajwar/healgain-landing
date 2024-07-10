@@ -1,3 +1,4 @@
+let mobileStartX, mobileStartY, mobileEndX, mobileEndY;
 var scrollStatus = {
   wheeling: false,
   functionCall: false,
@@ -35,17 +36,84 @@ const loadSectionFunctions = {
 };
 
 window.addEventListener("wheel", function (e) {
+  let direction = null;
+  if (e.deltaY > 0) direction = 'down'
+  else if (e.deltaY < 0) direction = 'up'
+  onScrollFunc(direction)
+});
+
+window.addEventListener('touchstart', function(event) {
+  mobileStartX = event.touches[0].clientX;
+  mobileStartY = event.touches[0].clientY;
+});
+
+window.addEventListener('touchmove', function(event) {
+  mobileEndX = event.touches[0].clientX;
+  mobileEndY = event.touches[0].clientY;
+});
+
+window.addEventListener('touchend', function() {
+  if (!mobileStartX || !mobileStartY || !mobileEndX || !mobileEndY) {
+      return;
+  }
+
+  const diffX = mobileEndX - mobileStartX;
+  const diffY = mobileEndY - mobileStartY;
+
+  if (Math.abs(diffX) > Math.abs(diffY)) {
+      if (diffX > 0) {
+          console.log('Swiped right');
+      } else {
+          console.log('Swiped left');
+      }
+  } else {
+      if (diffY > 0) {
+          console.log('Swiped down');
+          onScrollFunc('down')
+      } else {
+          console.log('Swiped up');
+          onScrollFunc('up')
+      }
+  }
+})
+
+// function onScrollFunc (e) {
+//   scrollStatus.wheeling = true;
+//   if (!scrollStatus.functionCall) {
+//     //parseScroll here
+//     if (e.deltaY > 0) {
+//       console.log("scrolled down");
+//       if (!(currentPageIndex >= pages.length - 1)) {
+//         currentPageIndex = currentPageIndex + 1;
+//         handlePageMove(currentPageIndex, "down");
+//       }
+//     }
+//     if (e.deltaY < 0) {
+//       if (!(currentPageIndex <= 0)) {
+//         currentPageIndex = currentPageIndex - 1;
+//         handlePageMove(currentPageIndex, "up");
+//       }
+//     }
+//     scrollStatus.functionCall = true;
+//   }
+//   window.clearInterval(scrollTimer);
+//   scrollTimer = window.setTimeout(function () {
+//     scrollStatus.wheeling = false;
+//     scrollStatus.functionCall = false;
+//   }, 50); //set this millisecond to your liking
+// }
+function onScrollFunc (direction) {
   scrollStatus.wheeling = true;
   if (!scrollStatus.functionCall) {
     //parseScroll here
-    if (e.deltaY > 0) {
+    if (direction === 'down') {
       console.log("scrolled down");
       if (!(currentPageIndex >= pages.length - 1)) {
         currentPageIndex = currentPageIndex + 1;
         handlePageMove(currentPageIndex, "down");
       }
     }
-    if (e.deltaY < 0) {
+    if (direction === 'up') {
       if (!(currentPageIndex <= 0)) {
         currentPageIndex = currentPageIndex - 1;
         handlePageMove(currentPageIndex, "up");
@@ -58,7 +126,7 @@ window.addEventListener("wheel", function (e) {
     scrollStatus.wheeling = false;
     scrollStatus.functionCall = false;
   }, 50); //set this millisecond to your liking
-});
+}
 
 const initializePages = () => {
   pages.forEach((page) => {
