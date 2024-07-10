@@ -3,8 +3,8 @@ var scrollStatus = {
   functionCall: false,
 };
 var scrollTimer = false;
-var currentPageIndex = 0;
-const pages = ["hero", "about", "feature1"];
+var currentPageIndex = 4;
+const pages = ["hero", "about", "feature1", "feature2", "feature3"];
 const pageMoveDelay = parseFloat(
   getComputedStyle(document.querySelector(":root"))
     .getPropertyValue("--page-move-delay")
@@ -23,6 +23,14 @@ const loadSectionFunctions = {
   feature1: {
     enter: feature1SectionEnter,
     exit: feature1SectionExit
+  },
+  feature2: {
+    enter: feature2SectionEnter,
+    exit: feature2SectionExit
+  },
+  feature3: {
+    enter: feature3SectionEnter,
+    exit: feature3SectionExit
   }
 };
 
@@ -65,7 +73,8 @@ const initializePages = () => {
 
 // Move page
 const loadingFirstPage = () => {
-  loadSectionFunctions.hero.enter();
+  // loadSectionFunctions.hero.enter();
+  loadSectionFunctions[pages[currentPageIndex]].enter();
 };
 const nextPage = () => {
   loadSectionFunctions.hero.exit();
@@ -197,6 +206,109 @@ function feature1SectionExit() {
 
   document.querySelector(".full-background").classList.remove("section-feature1");
   document.querySelector(".center-logo-container").classList.remove("section-feature1");
+
+  setTimeout(() => {
+    sectionDom.classList.add("hidden");
+    sectionDom.classList.remove("exit_animation");
+    sectionDom.classList.add("unanimated");
+  }, pageMoveDelay);
+}
+function feature2SectionEnter() {
+  const sectionDom = document.querySelector(
+    `.body-content[data-section="feature2"]`
+  );
+  sectionDom.classList.remove("hidden");
+  setTimeout(() => {
+    sectionDom.classList.remove("unanimated");
+  }, 300);
+  sectionDom.querySelector(".s4_subheading").classList.remove("unanimated");
+  document.querySelector(".full-background").classList.add("section-feature2");
+  document.querySelector(".center-logo-container").classList.add("section-feature2");
+
+  document
+    .querySelector(`.left-background[data-section="feature2"]`)
+    .classList.remove("unanimated");
+  document
+    .querySelector(`.right-background[data-section="feature2"]`)
+    .classList.remove("unanimated");
+  document
+    .querySelector(`.left-background[data-section="feature2"]`)
+    .classList.remove("exit_animation");
+  document
+    .querySelector(`.right-background[data-section="feature2"]`)
+    .classList.remove("exit_animation");
+    
+  document.querySelectorAll(".logo-leg-container .logo-leg-text").forEach(item => item.classList.remove('hidden'));
+}
+function feature2SectionExit() {
+  const sectionDom = document.querySelector(
+    `.body-content[data-section="feature2"]`
+  );
+  sectionDom.classList.add("exit_animation");
+
+  document
+    .querySelector(`.left-background[data-section="feature2"]`)
+    .classList.add("exit_animation");
+  document
+    .querySelector(`.right-background[data-section="feature2"]`)
+    .classList.add("exit_animation");
+
+  document.querySelector(".full-background").classList.remove("section-feature2");
+  document.querySelector(".center-logo-container").classList.remove("section-feature2");
+  document.querySelectorAll(".logo-leg-container .logo-leg-text").forEach(item => item.classList.add('hidden'));
+
+  setTimeout(() => {
+    sectionDom.classList.add("hidden");
+    sectionDom.classList.remove("exit_animation");
+    sectionDom.classList.add("unanimated");
+  }, pageMoveDelay);
+}
+function feature3SectionEnter() {
+  const sectionDom = document.querySelector(
+    `.body-content[data-section="feature3"]`
+  );
+  sectionDom.classList.remove("hidden");
+  setTimeout(() => {
+    sectionDom.classList.remove("unanimated");
+  }, 300);
+  sectionDom.querySelector(".s5_subheading").classList.remove("unanimated");
+  document.querySelector(".full-background").classList.add("section-feature3");
+  document.querySelector(".center-logo-container").classList.add("section-feature3");
+
+  document
+    .querySelector(`.left-background[data-section="feature3"]`)
+    .classList.remove("unanimated");
+  document
+    .querySelector(`.right-background[data-section="feature3"]`)
+    .classList.remove("unanimated");
+  document
+    .querySelector(`.left-background[data-section="feature3"]`)
+    .classList.remove("exit_animation");
+  document
+    .querySelector(`.right-background[data-section="feature3"]`)
+    .classList.remove("exit_animation");
+
+    document.querySelectorAll(".logo-leg-container .secondary-leg").forEach(item => item.classList.remove("hidden"))
+    document.querySelectorAll(".logo-leg-container .arrow-right").forEach(item => item.classList.remove("hidden"))
+    
+}
+function feature3SectionExit() {
+  const sectionDom = document.querySelector(
+    `.body-content[data-section="feature3"]`
+  );
+  sectionDom.classList.add("exit_animation");
+
+  document
+    .querySelector(`.left-background[data-section="feature3"]`)
+    .classList.add("exit_animation");
+  document
+    .querySelector(`.right-background[data-section="feature3"]`)
+    .classList.add("exit_animation");
+
+  document.querySelector(".full-background").classList.remove("section-feature3");
+  document.querySelector(".center-logo-container").classList.remove("section-feature3");
+  document.querySelectorAll(".logo-leg-container .secondary-leg").forEach(item => item.classList.add("hidden"))
+  document.querySelectorAll(".logo-leg-container .arrow-right").forEach(item => item.classList.add("hidden"))
 
   setTimeout(() => {
     sectionDom.classList.add("hidden");

@@ -183,6 +183,20 @@ body {
   top: 50%;
   transform: translate(-50%, -52%) rotate(135deg) scale(0.7);
 }
+.background-image .full-background.section-feature2 {
+  opacity: 0.55;
+  transform-origin: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -52%) rotate(135deg) scale(0.7);
+}
+.background-image .full-background.section-feature3 {
+  opacity: 0.55;
+  transform-origin: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -52%) rotate(135deg) scale(0.7);
+}
 .background-image .left-background {
   position: absolute;
   z-index: 101;
@@ -190,6 +204,10 @@ body {
   top: 50%;
   transform: translateY(-50%);
   transition: var(--bounce-transition);
+}
+.background-image .left-background[data-section=feature3] {
+  top: 0px;
+  transform: translateY(0);
 }
 .background-image .left-background.unanimated {
   transform: translateX(-100%);
@@ -201,6 +219,10 @@ body {
   top: 50%;
   transform: translateY(-50%);
   transition: var(--bounce-transition);
+}
+.background-image .right-background[data-section=feature3] {
+  bottom: 0px;
+  transform: translateY(0);
 }
 .background-image .right-background.unanimated {
   transform: translateX(100%);
@@ -231,85 +253,233 @@ body {
   height: 187px;
   transition: var(--bounce-transition);
 }
-.background-image .center-logo-container.section-hero img {
+.background-image .center-logo-container .logo-leg-container {
+  position: absolute;
+}
+.background-image .center-logo-container .logo-leg-container .logo-leg-text {
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  font-weight: 500;
+  transform: translateX(-50%) rotate(180deg);
+  transition: all var(--page-move-delay) ease-out;
+}
+.background-image .center-logo-container .logo-leg-container .logo-leg-text.hidden {
+  top: -100px;
+  opacity: 0;
+}
+.background-image .center-logo-container .logo-leg-container.top-leg .secondary-leg {
+  transform: translate(-130px, -15px) rotate(225deg) scale(1.2);
+}
+.background-image .center-logo-container .logo-leg-container.left-leg .secondary-leg {
+  transform: translate(-132px, -35px) rotate(195deg) scale(1.2);
+}
+.background-image .center-logo-container .logo-leg-container.right-leg .secondary-leg {
+  transform: translate(-138px, -35px) rotate(75deg) scale(1.2);
+}
+.background-image .center-logo-container .logo-leg-container .primary-leg {
   transition: var(--bounce-transition);
+}
+.background-image .center-logo-container .logo-leg-container .secondary-leg {
+  position: absolute;
+  transition: all calc(var(--page-move-delay) - 0.7s) ease-out;
+}
+.background-image .center-logo-container .logo-leg-container .secondary-leg.hidden {
+  opacity: 0;
+}
+.background-image .center-logo-container .logo-leg-container .arrow-right {
+  position: absolute;
+  transform: translate(0px, 50px) rotate(180deg);
+  transition: all calc(var(--page-move-delay) - 0.7s) ease-out;
+}
+.background-image .center-logo-container .logo-leg-container .arrow-right.hidden {
+  opacity: 0;
+}
+.background-image .center-logo-container.section-hero .logo-leg-container {
   position: absolute;
   transform-origin: center center;
   height: 27.54px;
   opacity: 0;
+  transition: var(--bounce-transition);
 }
-.background-image .center-logo-container.section-hero img.top-leg {
+.background-image .center-logo-container.section-hero .logo-leg-container.top-leg {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%) rotate(180deg);
 }
-.background-image .center-logo-container.section-hero img.left-leg {
+.background-image .center-logo-container.section-hero .logo-leg-container.left-leg {
   top: 0;
   left: 0;
 }
-.background-image .center-logo-container.section-hero img.right-leg {
+.background-image .center-logo-container.section-hero .logo-leg-container.right-left {
   top: 0;
   right: 0;
 }
 .background-image .center-logo-container.section-about {
-  width: 190px;
+  width: 200px;
   height: 140px;
   transform-origin: center;
   transform: translate(-50%, -100%) rotate(180deg);
 }
-.background-image .center-logo-container.section-about img {
+.background-image .center-logo-container.section-about .logo-leg-container {
   transition: var(--bounce-transition);
   position: absolute;
   transform-origin: center center;
   height: 95px;
   opacity: 1;
 }
-.background-image .center-logo-container.section-about img.top-leg {
+.background-image .center-logo-container.section-about .logo-leg-container.top-leg {
   bottom: 0;
   left: 50%;
-  transform: translateX(-50%) rotate(180deg);
+  transform: translateX(-50%);
 }
-.background-image .center-logo-container.section-about img.left-leg {
+.background-image .center-logo-container.section-about .logo-leg-container.top-leg .primary-leg {
+  transform: rotate(180deg);
+}
+.background-image .center-logo-container.section-about .logo-leg-container.left-leg {
   top: 0;
   left: 0;
   scale: 0.8;
+}
+.background-image .center-logo-container.section-about .logo-leg-container.left-leg .primary-leg {
   transform: rotate(-20deg);
 }
-.background-image .center-logo-container.section-about img.right-leg {
+.background-image .center-logo-container.section-about .logo-leg-container.right-leg {
   top: 0;
   right: 0;
   scale: 0.8;
+}
+.background-image .center-logo-container.section-about .logo-leg-container.right-leg .primary-leg {
   transform: rotate(20deg);
 }
 .background-image .center-logo-container.section-feature1 {
-  width: 190px;
+  width: 200px;
   height: 140px;
   transform-origin: center;
   transform: translate(-50%, -110%) rotate(180deg) scale(0.9);
 }
-.background-image .center-logo-container.section-feature1 img {
+.background-image .center-logo-container.section-feature1 .logo-leg-container {
   transition: var(--bounce-transition);
   position: absolute;
   transform-origin: center center;
   height: 95px;
   opacity: 1;
 }
-.background-image .center-logo-container.section-feature1 img.top-leg {
+.background-image .center-logo-container.section-feature1 .logo-leg-container.top-leg {
   bottom: 0;
   left: 50%;
-  transform: translateX(-50%) rotate(180deg);
+  transform: translateX(-50%);
 }
-.background-image .center-logo-container.section-feature1 img.left-leg {
+.background-image .center-logo-container.section-feature1 .logo-leg-container.top-leg .primary-leg {
+  transform: rotate(180deg);
+}
+.background-image .center-logo-container.section-feature1 .logo-leg-container.left-leg {
   top: 0;
   left: 0;
   scale: 0.8;
+}
+.background-image .center-logo-container.section-feature1 .logo-leg-container.left-leg .primary-leg {
   transform: rotate(-20deg);
 }
-.background-image .center-logo-container.section-feature1 img.right-leg {
+.background-image .center-logo-container.section-feature1 .logo-leg-container.right-leg {
   top: 0;
   right: 0;
   scale: 0.8;
+}
+.background-image .center-logo-container.section-feature1 .logo-leg-container.right-leg .primary-leg {
   transform: rotate(20deg);
+}
+.background-image .center-logo-container.section-feature2 {
+  width: 200px;
+  height: 140px;
+  transform-origin: center;
+  transform: translate(-50%, -110%) rotate(180deg) scale(0.9);
+}
+.background-image .center-logo-container.section-feature2 .logo-leg-container {
+  transition: var(--bounce-transition);
+  position: absolute;
+  transform-origin: center center;
+  height: 95px;
+  opacity: 1;
+}
+.background-image .center-logo-container.section-feature2 .logo-leg-container.top-leg {
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.background-image .center-logo-container.section-feature2 .logo-leg-container.top-leg .primary-leg {
+  transform: rotate(180deg);
+}
+.background-image .center-logo-container.section-feature2 .logo-leg-container.left-leg {
+  top: 0;
+  left: 0;
+  transform: translateX(-130px);
+}
+.background-image .center-logo-container.section-feature2 .logo-leg-container.left-leg .primary-leg {
+  transform: rotate(135deg);
+}
+.background-image .center-logo-container.section-feature2 .logo-leg-container.right-leg {
+  top: 0;
+  right: 0;
+  transform: translateX(130px);
+}
+.background-image .center-logo-container.section-feature2 .logo-leg-container.right-leg .primary-leg {
+  transform: rotate(-135deg);
+}
+.background-image .center-logo-container.section-feature3 {
+  width: 200px;
+  height: 140px;
+  transform-origin: center;
+  transform: translate(-50%, -110%) rotate(180deg) scale(0.9);
+}
+.background-image .center-logo-container.section-feature3 .logo-leg-container {
+  transition: var(--bounce-transition);
+  position: absolute;
+  transform-origin: center center;
+  height: 95px;
+  opacity: 1;
+}
+.background-image .center-logo-container.section-feature3 .logo-leg-container.top-leg {
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.background-image .center-logo-container.section-feature3 .logo-leg-container.top-leg .primary-leg {
+  transform: translate(0px, 0px) rotate(-45deg) scale(0.85);
+  transition: var(--bounce-transition);
+}
+.background-image .center-logo-container.section-feature3 .logo-leg-container.top-leg .secondary-leg {
+  transform: translate(-85px, 15px) rotate(180deg);
+}
+.background-image .center-logo-container.section-feature3 .logo-leg-container.top-leg .arrow-right {
+  transform: translate(-160px, 50px) rotate(180deg);
+}
+.background-image .center-logo-container.section-feature3 .logo-leg-container.left-leg {
+  top: 0;
+  left: 0;
+  transform: translateX(-130px);
+}
+.background-image .center-logo-container.section-feature3 .logo-leg-container.left-leg .primary-leg {
+  transform: translate(-20px) rotate(125deg) scale(0.85);
+  transition: var(--bounce-transition);
+}
+.background-image .center-logo-container.section-feature3 .logo-leg-container.left-leg .secondary-leg {
+  transform: translate(-205px, 5px) rotate(180deg);
+}
+.background-image .center-logo-container.section-feature3 .logo-leg-container.right-leg {
+  top: 0;
+  right: 0;
+  transform: translateX(130px);
+}
+.background-image .center-logo-container.section-feature3 .logo-leg-container.right-leg .primary-leg {
+  transform: translate(85px, 45px) rotate(-130deg) scale(0.85);
+  transition: var(--bounce-transition);
+}
+.background-image .center-logo-container.section-feature3 .logo-leg-container.right-leg .secondary-leg {
+  transform: translate(-95px, -35px) rotate(180deg);
+}
+.background-image .center-logo-container.section-feature3 .logo-leg-container.right-leg .arrow-right {
+  transform: translate(-120px, 50px) rotate(180deg);
 }
 
 .hero_subheading {
@@ -343,6 +513,14 @@ body {
   margin-top: 200px;
 }
 .content .s3_subheading {
+  transition: var(--bounce-transition);
+  margin-top: 200px;
+}
+.content .s4_subheading {
+  transition: var(--bounce-transition);
+  margin-top: 200px;
+}
+.content .s5_subheading {
   transition: var(--bounce-transition);
   margin-top: 200px;
 }
@@ -387,6 +565,26 @@ body {
   transition: var(--exit-transition) !important;
 }
 
+.left-background.exit_animation[data-section=feature2] {
+  transform: translate(550px, -300px) scale(0);
+  transition: var(--exit-transition) !important;
+}
+
+.right-background.exit_animation[data-section=feature2] {
+  transform: translate(-550px, -300px) scale(0);
+  transition: var(--exit-transition) !important;
+}
+
+.left-background.exit_animation[data-section=feature3] {
+  transform: translate(550px, -300px) scale(0);
+  transition: var(--exit-transition) !important;
+}
+
+.right-background.exit_animation[data-section=feature3] {
+  transform: translate(-550px, -300px) scale(0);
+  transition: var(--exit-transition) !important;
+}
+
 .body-content.unanimated[data-section=about] .content .s2_subheading {
   transform: translateY(20vh);
   scale: 2;
@@ -394,6 +592,18 @@ body {
 }
 
 .body-content.unanimated[data-section=feature1] .content .s3_subheading {
+  transform: translateY(20vh);
+  scale: 2;
+  opacity: 0;
+}
+
+.body-content.unanimated[data-section=feature2] .content .s4_subheading {
+  transform: translateY(20vh);
+  scale: 2;
+  opacity: 0;
+}
+
+.body-content.unanimated[data-section=feature3] .content .s5_subheading {
   transform: translateY(20vh);
   scale: 2;
   opacity: 0;
