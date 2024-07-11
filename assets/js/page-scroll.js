@@ -4,8 +4,8 @@ var scrollStatus = {
   functionCall: false,
 };
 var scrollTimer = false;
-var currentPageIndex = 0;
-const pages = ["hero", "about", "feature1", "feature2", "feature3"];
+var currentPageIndex = 3;
+const pages = ["hero", "about", "feature1", "feature2", "feature3", "technology_chart", "acknowledgments"];
 const pageMoveDelay = parseFloat(
   getComputedStyle(document.querySelector(":root"))
     .getPropertyValue("--page-move-delay")
@@ -32,6 +32,14 @@ const loadSectionFunctions = {
   feature3: {
     enter: feature3SectionEnter,
     exit: feature3SectionExit
+  },
+  technology_chart: {
+    enter: (direction) => technologyChartEnter(direction),
+    exit: (direction) => technologyChartExit(direction)
+  },
+  acknowledgments: {
+    enter: (direction) => acknowledgmentsEnter(direction),
+    exit: (direction) => acknowledgmentsExit(direction)
   }
 };
 
@@ -146,9 +154,9 @@ function onScrollFuncMobile (swipe) {
 
 const initializePages = () => {
   pages.forEach((page) => {
-    document
-      .querySelector(`.body-content[data-section="${page}"]`)
-      .classList.add("hidden");
+    var dom = document.querySelector(`.body-content[data-section="${page}"]`)
+    if (!dom) dom = document.querySelector(`.sliding-section[data-section="${page}"]`)
+    dom.classList.add("hidden");
     // document
     //   .querySelector(`.body-content[data-section="${page}"]`)
     //   .classList.add("unanimated");
@@ -166,11 +174,11 @@ const nextPage = () => {
 const handlePageMove = (pageIndex, direction) => {
   console.log("Page index", pageIndex);
   if (direction === "down") {
-    loadSectionFunctions[pages[pageIndex - 1]].exit();
-    loadSectionFunctions[pages[pageIndex]].enter();
+    loadSectionFunctions[pages[pageIndex - 1]].exit(direction);
+    loadSectionFunctions[pages[pageIndex]].enter(direction);
   } else if (direction === "up") {
-    loadSectionFunctions[pages[pageIndex + 1]].exit();
-    loadSectionFunctions[pages[pageIndex]].enter();
+    loadSectionFunctions[pages[pageIndex + 1]].exit(direction);
+    loadSectionFunctions[pages[pageIndex]].enter(direction);
   }
 };
 
@@ -400,5 +408,49 @@ function feature3SectionExit() {
     sectionDom.classList.add("unanimated");
   }, pageMoveDelay);
 }
+function technologyChartEnter(direction) {
+  const sectionDom = document.querySelector(
+    `.sliding-section[data-section="technology_chart"]`
+  );
+  sectionDom.classList.remove("hidden");
+  sectionDom.classList.remove("unanimated")
+  sectionDom.classList.remove("exit_animation")
+}
+function technologyChartExit(direction) {
+  const sectionDom = document.querySelector(
+    `.sliding-section[data-section="technology_chart"]`
+  );
+  // debugger;
+  if (direction === "up") {
+    sectionDom.classList.add("unanimated")
+  } else {
+    sectionDom.classList.add("exit_animation")
+  }
+  setTimeout(() => {
+    // sectionDom.classList.add("hidden");
+  }, pageMoveDelay);
+}
+function acknowledgmentsEnter(direction) {
+  const sectionDom = document.querySelector(
+    `.sliding-section[data-section="acknowledgments"]`
+  );
+  sectionDom.classList.remove("hidden");
+  sectionDom.classList.remove("unanimated")
+  sectionDom.classList.remove("exit_animation")
+}
+function acknowledgmentsExit(direction) {
+  const sectionDom = document.querySelector(
+    `.sliding-section[data-section="acknowledgments"]`
+  );
+  if (direction === "up") {
+    sectionDom.classList.add("unanimated")
+  } else {
+    sectionDom.classList.add("exit_animation")
+  }
+  setTimeout(() => {
+    // sectionDom.classList.add("hidden");
+  }, pageMoveDelay);
+}
+
 initializePages();
 loadingFirstPage();

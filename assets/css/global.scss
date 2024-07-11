@@ -49,6 +49,51 @@ body {
     display: none;
   }
 }
+
+.sliding-section {
+  position: absolute;
+  width: 90%;
+  max-width: 1024px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: var(--bounce-transition);
+  &.exit_animation {
+    position: absolute;
+    transform: translate(-50%, -110%);
+    opacity: 0;
+  }
+  // &.hidden {
+  //   display: none;
+  // }
+  &.unanimated {
+    position: absolute;
+    transform: translate(-50%, 110%);
+  }
+  * {
+    color: var(--text-dark);
+  }
+  &[data-section="technology_chart"] {
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  &[data-section="acknowledgments"] {
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
 .text-color-primary {
   color: var(--text-dark);
 }

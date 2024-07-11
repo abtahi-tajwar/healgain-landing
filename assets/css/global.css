@@ -46,6 +46,44 @@ body {
   display: none;
 }
 
+.sliding-section {
+  position: absolute;
+  width: 90%;
+  max-width: 1024px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: var(--bounce-transition);
+}
+.sliding-section.exit_animation {
+  position: absolute;
+  transform: translate(-50%, -110%);
+  opacity: 0;
+}
+.sliding-section.unanimated {
+  position: absolute;
+  transform: translate(-50%, 110%);
+}
+.sliding-section * {
+  color: var(--text-dark);
+}
+.sliding-section[data-section=technology_chart] .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sliding-section[data-section=technology_chart] .content img {
+  width: 100%;
+}
+.sliding-section[data-section=acknowledgments] .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sliding-section[data-section=acknowledgments] .content img {
+  width: 100%;
+}
+
 .text-color-primary {
   color: var(--text-dark);
 }
