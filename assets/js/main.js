@@ -4,8 +4,8 @@ var scrollStatus = {
   functionCall: false,
 };
 var scrollTimer = false;
-var currentPageIndex = 3;
-const pages = ["hero", "about", "feature1", "feature2", "feature3", "technology_chart", "acknowledgments"];
+var currentPageIndex = 7;
+const pages = ["hero", "about", "feature1", "feature2", "feature3", "technology_chart", "acknowledgments", "knowledgebase"];
 const pageMoveDelay = parseFloat(
   getComputedStyle(document.querySelector(":root"))
     .getPropertyValue("--page-move-delay")
@@ -40,6 +40,10 @@ const loadSectionFunctions = {
   acknowledgments: {
     enter: (direction) => acknowledgmentsEnter(direction),
     exit: (direction) => acknowledgmentsExit(direction)
+  },
+  knowledgebase: {
+    enter: (direction) => knowledgebaseEnter(direction),
+    exit: (direction) => knowledgebaseExit(direction)
   }
 };
 
@@ -144,7 +148,6 @@ function onScrollFuncMobile (swipe) {
     }
   }
   if (swipe === 'down') {
-    debugger;
     if (!(currentPageIndex <= 0)) {
       currentPageIndex = currentPageIndex - 1;
       handlePageMove(currentPageIndex, "up");
@@ -415,14 +418,17 @@ function technologyChartEnter(direction) {
   sectionDom.classList.remove("hidden");
   sectionDom.classList.remove("unanimated")
   sectionDom.classList.remove("exit_animation")
+  document.querySelector(".center-logo-container").classList.add("exit_animation");
+  document.querySelector(".full-background").classList.add("exit_animation");
 }
 function technologyChartExit(direction) {
   const sectionDom = document.querySelector(
     `.sliding-section[data-section="technology_chart"]`
   );
-  // debugger;
   if (direction === "up") {
     sectionDom.classList.add("unanimated")
+    document.querySelector(".center-logo-container").classList.remove("exit_animation");
+    document.querySelector(".full-background").classList.remove("exit_animation");
   } else {
     sectionDom.classList.add("exit_animation")
   }
@@ -449,8 +455,66 @@ function acknowledgmentsExit(direction) {
   }
   setTimeout(() => {
     // sectionDom.classList.add("hidden");
+
   }, pageMoveDelay);
 }
+function knowledgebaseEnter(direction) {
+  const sectionDom = document.querySelector(
+    `.sliding-section[data-section="knowledgebase"]`
+  );
+  sectionDom.classList.remove("hidden");
+  sectionDom.classList.remove("unanimated")
+  sectionDom.classList.remove("exit_animation")
+}
+function knowledgebaseExit(direction) {
+  const sectionDom = document.querySelector(
+    `.sliding-section[data-section="knowledgebase"]`
+  );
+  if (direction === "up") {
+    sectionDom.classList.add("unanimated")
+  } else {
+    sectionDom.classList.add("exit_animation")
+  }
+  setTimeout(() => {
+    // sectionDom.classList.add("hidden");
+
+  }, pageMoveDelay);
+}
+
+
+
+// Initialize customer revenue carousel
+const customerReviewCarousel = new Carousel("customer-review-carousel", {
+  autoSlide: true
+})
+
+// Initialize knowledgebase accordion
+const knowledgebaseAccordio = new Accordion("knowledgebase-accordion")
+
+
+// window.odometerOptions = {
+//   // auto: false, // Don't automatically initialize everything with class 'odometer'
+//   selector: '#waitlist-odometer', // Change the selector used to automatically find things to be animated
+//   format: '(,ddd).dd', // Change how digit groups are formatted, and how many digits are shown after the decimal point
+//   duration: 300, // Change how long the javascript expects the CSS animation to take
+//   theme: 'car', // Specify the theme (if you have more than one theme css file on the page)
+//   animation: 'count' // Count is a simpler animation method which just increments the value,
+//                      // use it when you're looking for something more subtle.
+// }
+// var el = document.querySelector('#waitlist-odometer');
+
+// od = new Odometer({
+//   el: el,
+//   value: 333555,
+
+//   // Any option (other than auto and selector) can be passed in here
+//   format: '',
+//   theme: 'digital'
+// });
+
+// od.update(555)
+// // or
+// el.innerHTML = 555
 
 initializePages();
 loadingFirstPage();

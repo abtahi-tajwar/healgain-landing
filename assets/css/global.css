@@ -1,19 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap");
 /** Global styles **/
-:root {
-  --text-dark: #274d87;
-  --text-gray: #5e718e;
-  --color-primary: #c0a5ef;
-  --color-accent: #2cc6cf;
-  --color-accent-hover: #1ea3aa;
-  --page-move-delay: 1.3s;
-  --exit-animation-duration: 0.3s;
-  --bounce-transition: all var(--page-move-delay)
-    cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  --exit-transition: all var(--exit-animation-duration) linear;
-}
-
-body {
+html, body {
   font-family: "Overpass", sans-serif;
   font-optical-sizing: auto;
   -webkit-font-smoothing: antialiased;
@@ -22,6 +9,10 @@ body {
   height: 100vh;
   width: 100%;
   overflow: hidden;
+}
+
+body {
+  position: relative;
 }
 
 .parent {
@@ -63,6 +54,7 @@ body {
 .sliding-section.unanimated {
   position: absolute;
   transform: translate(-50%, 110%);
+  opacity: 0;
 }
 .sliding-section * {
   color: var(--text-dark);
@@ -77,11 +69,143 @@ body {
 }
 .sliding-section[data-section=acknowledgments] .content {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+}
+@media screen and (max-width: 650px) {
+  .sliding-section[data-section=acknowledgments] .content {
+    flex-direction: column;
+    transform-origin: center;
+    transform: scale(0.7);
+  }
+}
+.sliding-section[data-section=acknowledgments] .content > div {
+  flex: 1;
+}
+.sliding-section[data-section=acknowledgments] .content .left-card {
+  padding: 16px;
+  border-radius: 20px;
+  background-image: linear-gradient(135deg, rgba(255, 231, 208, 0.5294117647), rgba(255, 231, 208, 0.7803921569));
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+}
+.sliding-section[data-section=acknowledgments] .content .left-card > h2, .sliding-section[data-section=acknowledgments] .content .left-card p {
+  margin: 0;
+}
+.sliding-section[data-section=acknowledgments] .content .left-card .left-card-heading {
+  font-size: 32px;
+  font-weight: 300;
+}
+.sliding-section[data-section=acknowledgments] .content .left-card .left-card-value-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.sliding-section[data-section=acknowledgments] .content .left-card .left-card-value-container .left-card-value {
+  font-size: 40px;
+  font-weight: 600;
+}
+@media screen and (max-width: 900px) {
+  .sliding-section[data-section=acknowledgments] .content .center-image-container {
+    display: none;
+  }
 }
 .sliding-section[data-section=acknowledgments] .content img {
   width: 100%;
+}
+.sliding-section[data-section=acknowledgments] .content .right-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.sliding-section[data-section=acknowledgments] .content .social-link-container {
+  padding: 16px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-image: linear-gradient(135deg, rgba(178, 248, 253, 0.3529411765), rgba(178, 248, 253, 0.7764705882));
+}
+.sliding-section[data-section=acknowledgments] .content .social-link-container .social-link-icons {
+  display: flex;
+  gap: 16px;
+}
+.sliding-section[data-section=acknowledgments] .content .social-link-container .social-link-icons img {
+  height: 40px;
+  width: 40px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.sliding-section[data-section=acknowledgments] .content .customer-review-container {
+  padding: 16px;
+  border-radius: 20px;
+  background-image: linear-gradient(135deg, rgba(255, 208, 208, 0.3529411765), rgba(255, 208, 208, 0.7764705882));
+}
+.sliding-section[data-section=acknowledgments] .content .customer-review-carousel-item {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+.sliding-section[data-section=acknowledgments] .content .customer-review-carousel-item .quote-col {
+  width: 25px;
+}
+.sliding-section[data-section=acknowledgments] .content .customer-review-carousel-item .quote-col img {
+  width: 100%;
+}
+.sliding-section[data-section=acknowledgments] .content .customer-review-carousel-item .details-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.sliding-section[data-section=acknowledgments] .content .customer-review-carousel-item .details-col p {
+  margin: 0;
+  padding: 0;
+}
+.sliding-section[data-section=acknowledgments] .content .customer-review-carousel-item .details-col .reviewer-details {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.sliding-section[data-section=acknowledgments] .content .customer-review-carousel-item .details-col .reviewer-details .reviewer-avatar {
+  width: 40px;
+  height: 40px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  background-color: white;
+  border-radius: 50%;
+}
+.sliding-section[data-section=acknowledgments] .content .customer-review-carousel-item .details-col .reviewer-details .reviewer-name {
+  font-weight: bold;
+}
+.sliding-section[data-section=knowledgebase] .content {
+  display: flex;
+  gap: 16px;
+  text-align: center;
+}
+.sliding-section[data-section=knowledgebase] .content h2 {
+  font-weight: 400;
+  font-size: 2rem;
+}
+.sliding-section[data-section=knowledgebase] .content .content-body {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+@media screen and (max-width: 850px) {
+  .sliding-section[data-section=knowledgebase] .content .content-body {
+    flex-direction: column;
+    align-items: center;
+    transform: scale(0.8);
+  }
+}
+.sliding-section[data-section=knowledgebase] .content .content-body .right-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .text-color-primary {
@@ -202,6 +326,11 @@ body {
   transform-origin: center;
   opacity: 0.7;
 }
+.background-image .full-background.exit_animation {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
 .background-image .full-background.section-hero {
   left: 50%;
   top: 50%;
@@ -290,6 +419,60 @@ body {
   width: 305px;
   height: 187px;
   transition: var(--bounce-transition);
+}
+.background-image .center-logo-container.exit_animation {
+  transform: translate(-50%, -50%) rotate(180deg);
+  opacity: 0;
+}
+.background-image .center-logo-container.exit_animation .logo-leg-container {
+  transition: var(--bounce-transition);
+  position: absolute;
+  transform-origin: center center;
+  height: 95px;
+  opacity: 0;
+  transform: rotate(0deg) !important;
+}
+.background-image .center-logo-container.exit_animation .logo-leg-container.top-leg {
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.background-image .center-logo-container.exit_animation .logo-leg-container.top-leg .primary-leg {
+  transform: translate(0px, 0px) rotate(-45deg) scale(0.85);
+  transition: var(--bounce-transition);
+}
+.background-image .center-logo-container.exit_animation .logo-leg-container.top-leg .secondary-leg {
+  transform: translate(-85px, 15px) rotate(180deg);
+}
+.background-image .center-logo-container.exit_animation .logo-leg-container.top-leg .arrow-right {
+  transform: translate(-160px, 50px) rotate(180deg);
+}
+.background-image .center-logo-container.exit_animation .logo-leg-container.left-leg {
+  top: 0;
+  left: 0;
+  transform: translateX(-130px);
+}
+.background-image .center-logo-container.exit_animation .logo-leg-container.left-leg .primary-leg {
+  transform: translate(-20px) rotate(125deg) scale(0.85);
+  transition: var(--bounce-transition);
+}
+.background-image .center-logo-container.exit_animation .logo-leg-container.left-leg .secondary-leg {
+  transform: translate(-205px, 5px) rotate(180deg);
+}
+.background-image .center-logo-container.exit_animation .logo-leg-container.right-leg {
+  top: 0;
+  right: 0;
+  transform: translateX(130px);
+}
+.background-image .center-logo-container.exit_animation .logo-leg-container.right-leg .primary-leg {
+  transform: translate(85px, 45px) rotate(-130deg) scale(0.85);
+  transition: var(--bounce-transition);
+}
+.background-image .center-logo-container.exit_animation .logo-leg-container.right-leg .secondary-leg {
+  transform: translate(-95px, -35px) rotate(180deg);
+}
+.background-image .center-logo-container.exit_animation .logo-leg-container.right-leg .arrow-right {
+  transform: translate(-120px, 50px) rotate(180deg);
 }
 .background-image .center-logo-container .logo-leg-container {
   position: absolute;

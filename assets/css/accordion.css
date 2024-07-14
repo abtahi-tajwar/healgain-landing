@@ -1,0 +1,33 @@
+.accordion-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.accordion-wrapper .accordion-item {
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: height 0.3s ease-out;
+  text-align: left;
+}
+.accordion-wrapper .accordion-item .accordion-title {
+  position: relative;
+  font-weight: 600;
+  padding: 16px;
+  padding-right: 100px;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.accordion-wrapper .accordion-item .accordion-title .accordion-toggle-icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 24px;
+  width: 24px;
+}
+.accordion-wrapper .accordion-item .accordion-description {
+  padding: 16px;
+  padding-top: 0px;
+  font-weight: 300;
+}/*# sourceMappingURL=accordion.css.map */
