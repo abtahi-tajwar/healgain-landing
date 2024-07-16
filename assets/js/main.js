@@ -4,7 +4,7 @@ var scrollStatus = {
   functionCall: false,
 };
 var scrollTimer = false;
-var currentPageIndex = 7;
+var currentPageIndex = 0;
 const pages = ["hero", "about", "feature1", "feature2", "feature3", "technology_chart", "acknowledgments", "knowledgebase"];
 const pageMoveDelay = parseFloat(
   getComputedStyle(document.querySelector(":root"))
